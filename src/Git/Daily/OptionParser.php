@@ -39,7 +39,7 @@ class Git_Daily_OptionParser
 
         for ($i = 0, $end = count($argv); $i < $end ; ++$i) {
             $arg = $argv[$i];
-            if ($arg{0} == '-') {
+            if ($arg[0] == '-') {
                 $optdef_key = $this->_findDef($arg);
                 if (!$optdef_key) {
                     throw new Git_Daily_Exception(
@@ -88,7 +88,7 @@ class Git_Daily_OptionParser
     private function _findDef($arg)
     {
         // longopt
-        if (strlen($arg) > 3 && $arg{0} == '-' && $arg{1} == '-') {
+        if (strlen($arg) > 3 && $arg[0] == '-' && $arg[1] == '-') {
             foreach ($this->options as $key => $opt) {
                 $def_opt = $opt[1];
                 $real_arg = substr($arg, 2);
@@ -100,7 +100,7 @@ class Git_Daily_OptionParser
             // not found
             return false;
         }
-        if (strlen($arg) == 2 && $arg{0} == '-') {
+        if (strlen($arg) == 2 && $arg[0] == '-') {
             foreach ($this->options as $key => $opt) {
                 $def_opt = $opt[0];
                 $real_arg = substr($arg, 1);
